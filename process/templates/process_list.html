@@ -1,0 +1,57 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+
+    Liste des Documents
+{% endblock %}
+
+
+
+{% block toolbar %}
+    <!--begin::Page title-->
+    <div data-kt-place="true" data-kt-place-mode="prepend" data-kt-place-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0" style="margin-left: 23px;margin-top: 12px;">
+
+
+        <!--begin::Breadcrumb-->
+        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+
+          Liste des Commande</h1>
+        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="" class="text-muted text-hover-primary">Accueil</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-100 w-5px h-2px"></span>
+            </li>
+            <!--end::Item-->
+
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Commande
+
+            </li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+        <!--end::Page title-->
+
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+
+{% include 'base/includes/list_table.html' %}
+
+
+
+
+
+
+{% endblock content %}
+

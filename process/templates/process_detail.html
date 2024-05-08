@@ -1,0 +1,248 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Bienvenue sur {% endblock %}
+
+
+{% block css %}
+{% endblock css %}
+
+{% block toolbar %}
+    <div data-kt-place="true" data-kt-place-mode="prepend" data-kt-place-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0" style="margin-left: 23px;margin-top: 12px;">
+
+
+        <!--begin::Breadcrumb-->
+        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+
+          Détail du produit.</h1>
+        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="" class="text-muted text-hover-primary">Accueil</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-100 w-5px h-2px"></span>
+            </li>
+            <!--end::Item-->
+
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+
+            </li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+        <!--end::Page title-->
+
+    </div>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div id="kt_app_content" class="app-content flex-column-fluid">
+								<!--begin::Content container-->
+								<div id="kt_app_content_container" class="app-container container-xxl">
+									<!--begin::Post card-->
+									<div class="card mt-4">
+										<!--begin::Body-->
+										<div class="card-body p-lg-10 pb-lg-0">
+											<!--begin::Layout-->
+											<div class="d-flex flex-column flex-xl-row">
+												<!--begin::Content-->
+												<div class="flex-lg-row-fluid me-xl-15">
+													<!--begin::Post content-->
+													<div class="mb-17">
+														<!--begin::Wrapper-->
+														<div class="mb-8">
+
+															<!--end::Info-->
+															<!--begin::Title-->
+															<a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold">{{ process.name }}
+															<!--end::Title-->
+															<!--begin::Container-->
+															<div class="overlay mt-8">
+																<!--begin::Image-->
+																<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px"   style="background-size: contain;background-position: center;background-image:url(/{{ process.image }});"></div>
+																<!--end::Image-->
+																<!--begin::Links-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+
+																</div>
+																<!--end::Links-->
+															</div>
+															<!--end::Container-->
+														</div>
+														<!--end::Wrapper-->
+
+														<!--end::Description-->
+														<!--begin::Block-->
+														<div class="d-flex align-items-center border-1 border-dashed card-rounded p-5 p-lg-10 mb-14">
+															<!--begin::Section-->
+															<div class="text-center flex-shrink-0 me-7 me-lg-13">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-70px symbol-circle mb-2" style="background-size: contain;background-position: center;" >
+																	<img src="/{{ process.image }}" class="" alt="" />
+																</div>
+
+															</div>
+															<!--end::Section-->
+															<!--begin::Text-->
+															<div class="mb-0 fs-6">
+																<div class="text-muted fw-semibold lh-lg mb-2">{{process.name}}.</div>
+																<a href="pages/user-profile/overview.html" class="fw-semibold link-primary">Réf: {{process.reference}}</a>
+															</div>
+                                                           <!--begin::Text-->
+   
+    <!--end::Text-->
+
+
+
+															<!--end::Text-->
+														</div>
+
+														<!--end::Block-->
+														<!--begin::Icons-->
+
+														<!--end::Icons-->
+													</div>
+													<!--end::Post content-->
+												</div>
+												<!--end::Content-->
+												<!--begin::Sidebar-->
+												<div class="flex-column flex-lg-row-auto w-100 w-xl-300px mb-10">
+													<!--begin::Search blog-->
+
+													<!--end::Search blog-->
+													<!--begin::Catigories-->
+													<div class="mb-16">
+														<h4 class="text-gray-900 mb-7">Caractirestque</h4>
+														<!--begin::Item-->
+														<div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+															<!--begin::Text-->
+															<a href="#" class="text-muted text-hover-primary pe-2">Categories</a>
+															<!--end::Text-->
+															<!--begin::Number-->
+															<div class="m-0">{{ process.category }}</div>
+															<!--end::Number-->
+														</div>
+														<!--end::Item-->
+														<!--begin::Item-->
+														<div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+															<!--begin::Text-->
+															<a href="#" class="text-muted text-hover-primary pe-2">Prix</a>
+															<!--end::Text-->
+															<!--begin::Number-->
+															
+															<!--end::Number-->
+														</div>
+														<!--end::Item-->
+														<!--begin::Item-->
+														<div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+															<!--begin::Text-->
+															<a href="#" class="text-muted text-hover-primary pe-2">volume</a>
+															<!--end::Text-->
+															<!--begin::Number-->
+															<div class="m-0">{{ process.volume }}</div>
+															<!--end::Number-->
+														</div>
+														<!--end::Item-->
+														<!--begin::Item-->
+														<div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+															<!--begin::Text-->
+															<a href="#" class="text-muted text-hover-primary pe-2">Reference</a>
+															<!--end::Text-->
+															<!--begin::Number-->
+															<div class="m-0 fw-semibold link-primary">{{process.reference}}</div>
+															<!--end::Number-->
+														</div>
+														<!--end::Item-->
+														<!--begin::Item-->
+														<div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+															<!--begin::Text-->
+															<a href="#" class="text-muted text-hover-primary pe-2">Type de stockage</a>
+															<!--end::Text-->
+															<!--begin::Number-->
+															<div class="m-0">{{process.storage_type}}</div>
+															<!--end::Number-->
+														</div>
+
+													</div>
+													<!--end::Catigories-->
+													<!--begin::Recent posts-->
+													<div class="m-0">
+														<h4 class="text-gray-900 mb-7">All process {{ process.category }}</h4>
+														<!--begin::Item-->
+                                                      {% for process in list_process %}
+														<div class="d-flex flex-stack mb-7">
+															<!--begin::Symbol-->
+															<div class="symbol symbol-60px symbol-2by3 me-4">
+																<div class="symbol-label" style="background-color: white;  background-size: contain;background-position: center;background-image:url(/media/{{ process.image }})"></div>
+															</div>
+															<!--end::Symbol-->
+															<!--begin::Title-->
+															<div class="m-0">
+																<a href="{% url 'process:Detail_process' process.pk %}" class="text-gray-900 fw-bold text-hover-primary fs-6">{{ process.name }}</a>
+																<span class="text-gray-600 fw-semibold d-block pt-1 fs-7">We’ve been a focused on making a the sky  {{process.reference}}</span>
+															</div>
+															<!--end::Title-->
+														</div>
+{% endfor %}
+													</div>
+													<!--end::Recent posts-->
+												</div>
+												<!--end::Sidebar-->
+											</div>
+
+										</div>
+										<!--end::Body-->
+									</div>
+									<!--end::Post card-->
+								</div>
+								<!--end::Content container-->
+							</div>
+
+
+{% endblock content %}
+
+
+{% block javascript %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const filterButton = document.querySelector("[data-kt-menu='click']");
+        const filtersContainer = document.querySelector(".card-reset");
+
+        filterButton.addEventListener("click", function() {
+            filtersContainer.classList.toggle("filters-visible");
+        });
+    });
+</script>
+<script>
+
+    function getState(cid){
+        var url = "".replace("999999999999" , cid);
+        $.ajax({
+            url: url,
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.is_ok) {
+                    $("#message_" + cid).html(data.html);
+                }
+            }
+        });
+    }
+
+    {% for c in user.active_accounts %}
+        {% if c.can_view_commade_list %}
+          getState({{c.id}});
+        {% endif %}
+    {% endfor %}
+</script>
+
+{% endblock javascript%}
