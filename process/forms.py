@@ -1,6 +1,7 @@
 from crispy_forms.helper import FormHelper
 
 from process.models import Process
+from django import forms
 
 
 class ProcessListFormHelper(FormHelper):
@@ -11,6 +12,13 @@ class ProcessListFormHelper(FormHelper):
     help_text_inline = True
     form_show_labels = False
 
+
+
+
+class FridgeForm(forms.ModelForm):
+    class Meta:
+        model = Process
+        fields = ['image']
 
 
 

@@ -1,0 +1,244 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% block title %}Bienvenue sur {% endblock %}
+
+<link href="{% static 'assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet" type="text/css"/>
+{% block css %}
+{% endblock css %}
+
+{% block toolbar %}
+
+
+<div id="kt_app_toolbar" class="app-toolbar" style="height: 50px">
+	<!--begin::Toolbar container-->
+	<div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
+		<!--begin::Page title-->
+		<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+			
+			<ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8 mt-8">
+				<!--begin:::Tab item-->
+				<li class="nav-item text-end">
+					<a class="nav-link text-active-primary  active" data-bs-toggle="tab"
+					   href="#kt_customer_view_overview_tab">Dashboard</a>
+				</li>
+			
+			
+			</ul>
+		</div>
+		<!--end::Page title-->
+	
+	</div>
+	<!--end::Toolbar container-->
+</div>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex flex-column flex-column-fluid">
+	
+	
+	<!--begin::Content container-->
+	<div id="kt_app_content_container">
+		<form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
+			  data-kt-redirect="apps/ecommerce/catalog/categories.html">
+			<!--begin::Aside column-->
+			<div class="d-flex flex-column flex-row-fluid gap-6 gap-lg-6 w-150 w-lg-20px mb-5 me-lg-4">
+				<!--begin::Thumbnail settings-->
+				<div class="card card-flush py-4">
+					<!--begin::Card header-->
+					<div class="card-header">
+						<!--begin::Card title-->
+						<div class="card-title">
+							<h2>Planogramme</h2>
+						</div>
+						<!--end::Card title-->
+					</div>
+					<!--end::Card header-->
+					<!--begin::Card body-->
+					<div class="card-body text-center pt-0">
+						<!--begin::Image input-->
+						<!--begin::Image input-->
+						<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3"
+							 data-kt-image-input="true">
+							<!--begin::Preview existing avatar-->
+							<div class=" w-300px h-500px">
+								<img alt="Logo" src="{% static 'assets/img/plannogramme.jpeg' %}"
+									 class="h-500px w-250px "/>
+							</div>
+							
+							<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+								  data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+															<i class="ki-duotone ki-cross fs-2">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+														</span>
+							<!--end::Cancel-->
+							<!--begin::Remove-->
+							<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+								  data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+															<i class="ki-duotone ki-cross fs-2">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+														</span>
+							<!--end::Remove-->
+						</div>
+					
+					</div>
+					<!--end::Card body-->
+				</div>
+			
+			</div>
+			<!--end::Aside column-->
+			<!--begin::Main column-->
+			<div class="d-flex flex-column flex-row-fluid  gap-6 gap-lg-6 h-600px">
+				<!--begin::General options-->
+				
+				
+				<div class="card-body card-flush pt-0 py-4 ">
+					<div class="card card-flush pt-3 mb-5 mb-xl-10" style="height: 632px">
+						<!--begin::Card header-->
+						<div class="card-header">
+							<!--begin::Card title-->
+							<div class="card-title">
+								<h2>Evaluation</h2>
+							</div>
+							<!--end::Card title-->
+							<!--begin::Toolbar-->
+							<div class="card-toolbar">
+								<!--begin::Tab nav-->
+								<ul class="nav nav-stretch fs-5 fw-semibold nav-line-tabs nav-line-tabs-2x border-transparent"
+									role="tablist">
+									<li class="nav-item" role="presentation">
+										<a id="kt_referrals_year_tab" class="nav-link text-active-primary active"
+										   data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_1">Planogram
+											Schema</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a id="kt_referrals_2019_tab" class="nav-link text-active-primary ms-3"
+										   data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_2">JSON
+											Response</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a id="kt_referrals_2018_tab" class="nav-link text-active-primary ms-3"
+										   data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_3">Matching
+											Result</a>
+									</li>
+								
+								</ul>
+								<!--end::Tab nav-->
+							</div>
+							<!--end::Toolbar-->
+						</div>
+						<!--end::Card header-->
+						<!--begin::Card body-->
+						<div class="card-body pt-2">
+							<!--begin::Tab Content-->
+							<div id="kt_referred_users_tab_content" class="tab-content">
+								<!--begin::Tab panel-->
+								<div id="kt_customer_details_invoices_1" class="tab-pane fade show active"
+									 role="tabpanel">
+									<!--begin::Table wrapper-->
+									<div class="table-responsive">
+										<div class="scroll h-500px px-2">
+											<!--begin::Planogram Schema-->
+											<div id="container"
+												 style="font-family: monospace; white-space: pre; padding: 10px; background-color: #f8f9fa; border-radius: 5px; border: 1px solid #dee2e6; overflow: auto;"></div>
+											<script>
+												fetch('saved_models/planogram_results.json')
+												.then(response => response.json())
+												.then(data => {
+													const jsonContainer = document.getElementById('container');
+													jsonContainer.textContent = JSON.stringify(data, null, 4);
+												})
+												.catch(error => {
+													console.error('Error fetching JSON:', error);
+													const jsonContainer = document.getElementById('container');
+													jsonContainer.textContent = 'Error fetching JSON';
+												});
+											</script>
+											<!--end::JSON Response-->
+										</div>
+											<!-- Affichage des données JSON -->
+										
+										
+										
+									</div>
+									<!--end::Table wrapper-->
+								</div>
+								<!--end::Tab panel-->
+								<!--begin::Tab panel-->
+								<div id="kt_customer_details_invoices_2" class="tab-pane fade" role="tabpanel">
+									<!--begin::Table wrapper-->
+									<div class="table-responsive">
+										<div class="scroll h-500px px-2">
+											<!--begin::JSON Response-->
+											<div id="json-container"
+												 style="font-family: monospace; white-space: pre; padding: 10px; background-color: #f8f9fa; border-radius: 5px; border: 1px solid #dee2e6; overflow: auto;"></div>
+											
+											<script>
+												fetch('saved_models/testImg_results.json')
+												.then(response => response.json())
+												.then(data => {
+													const jsonContainer = document.getElementById('json-container');
+													jsonContainer.textContent = JSON.stringify(data, null, 4);
+												})
+												.catch(error => {
+													console.error('Error fetching JSON:', error);
+													const jsonContainer = document.getElementById('json-container');
+													jsonContainer.textContent = 'Error fetching JSON';
+												});
+											</script>
+											<!--end::JSON Response-->
+										</div>
+									</div>
+									<!--end::Table wrapper-->
+								</div>
+								
+								<!--end::Tab panel-->
+								<!--begin::Tab panel-->
+								<div id="kt_customer_details_invoices_3" class="tab-pane fade" role="tabpanel">
+									<!--begin::Table wrapper-->
+									<div class="table-responsive">
+										<div class="scroll h-400px px-2">
+										
+										
+										</div>
+									</div>
+									<!--end::Table wrapper-->
+								</div>
+							
+							
+							</div>
+							<!--end::Tab Content-->
+						</div>
+						<!--end::Card body-->
+					</div>
+				</div>
+				<!--end::Card header-->
+			</div>
+		
+		
+		</form>
+	</div>
+	<!--end::Content container-->
+
+</div>
+
+
+{% endblock content %}
+
+
+{% block javascript %}
+<script>
+	document.querySelector('#category_{{ productCategory.id }}').indeterminate = true;
+</script>
+
+
+<script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}"></script>
+{% endblock javascript%}
