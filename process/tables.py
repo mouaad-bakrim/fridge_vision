@@ -27,11 +27,22 @@ class ProcessListTable(tables.Table):
 
     image = tables.TemplateColumn(
         '''
-        <div class="d-flex align-items-center">
-            <div class="symbol symbol-50px me-3">
-                <img src="{{ record.image.url }}" class="" alt="" />
-            </div>
+     {% if record.image %}
+    <div class="d-flex align-items-center">
+        <div class="symbol symbol-50px me-3">
+            <img src="{{ record.image.url }}" class="" alt="" />
         </div>
+    </div>
+{% else %}
+ <div class="d-flex align-items-center">
+        <div class="symbol symbol-50px me-3">
+    <img src="https://png.pngtree.com/thumb_back/fh260/background/20230929/pngtree-this-is-a-refrigerator-in-a-home-image_13301679.jpg" class="" alt="" />
+        </div>
+    </div>
+
+
+{% endif %}
+
         ''',
         verbose_name="Image",
         attrs={"th": {"class": "text-center"}, "td": {"class": "text-center"}}
@@ -46,5 +57,5 @@ class ProcessListTable(tables.Table):
         attrs = {
             "class": "table table-bordered table-striped table-hover text-gray-100 table-heading table-datatable dataTable g-2 fs-6"
         }
-        per_page = 100
+        per_page = 10
         template_name = 'django_tables2/bootstrap.html'

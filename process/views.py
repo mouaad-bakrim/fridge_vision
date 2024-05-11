@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from uuid import uuid4
 
 from base.utils import PagedFilteredTableView
@@ -12,7 +13,7 @@ from django.views import View
 from .forms import FridgeForm
 
 import numpy as np
-
+import random
 from PIL import Image
 from tensorflow.keras.preprocessing import image
 from django.views.generic import DetailView
@@ -72,24 +73,24 @@ class DetailProcess(DetailView):
 import json
 
 
-def Dashboard(request):
-    with open('saved_models/testImg_results.json') as json_file:
-        json_data = json.load(json_file)
-
-    return render(request, 'dashboard.html', {'json_data': json_data})
-
 
 import os, cv2
 import json
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
-
+from django.http import JsonResponse
 class Upload_image(View):
+
+
     def get(self, request):
         form = FridgeForm()  # Crée un formulaire vide pour affichage initial
         return render(request, 'upload_image.html', {'form': form})
 
     def post(self, request):
         form = FridgeForm(request.POST, request.FILES)
+
+
 
         if form.is_valid():
             form.save()
@@ -98,6 +99,31 @@ class Upload_image(View):
             base_path = "/home/smart/Documents/projet/fridge_vision/"
             relative_path = fridge_obj.image.url
             IMAGE_PATH = os.path.join(base_path, relative_path.lstrip('/'))
+            print("Traitement de l'image en cours...")
+
+            def showProgressBar():
+                # Vous pouvez implémenter ici le code pour afficher la barre de progression
+                return JsonResponse({'status': 'progress-bar-showing'})
+
+            def updateProgressBar(progress):
+                # Vous pouvez implémenter ici le code pour mettre à jour la barre de progression
+                return JsonResponse({'status': 'progress-bar-updated', 'progress': progress})
+
+            def hideProgressBar():
+                # Vous pouvez implémenter ici le code pour masquer la barre de progression
+                return JsonResponse({'status': 'progress-bar-hidden'})
+
+            print("Traitement de l'image en cours...")
+
+            showProgressBar()
+
+            for progress in range(0, 101, 10):  # Exemple de progression de 0 à 100%
+                time.sleep(1)  # Simule un traitement qui prend du temps
+                updateProgressBar(progress)
+
+            hideProgressBar()
+
+
             def summary(boxes, names, orig_shape, normalize=False, decimals=5):
                 results = []
                 h, w = orig_shape if normalize else (1, 1)
@@ -227,26 +253,37 @@ class Upload_image(View):
 
                 return sorted_shelves_with_items, items_detections
 
-            def draw_boxes(image_path, detections):
+            class_names = [
+                "SA200", "SA150", "SA100", "SA50", "SA33", "SA33KRZ", "SA33KRG", "SA33KB", "SA33KV", "SA33KO", "SA33FT",
+                "SA33DISF", "SA33DISG", "SA75V", "AAT150", "AAT50", "AAT33", "B200", "B150", "B60", "OUL100", "OUL100L",
+                "OUL50", "OUL50L", "OUL33", "OUL25OW", "OUL25MJT", "OUL25TRP", "OUL25OR", "OUL75P", "VTL150", "VTL33",
+                "ORG100", "ORG100Z", "ORG50", "ORG50Z", "ORG25", "BG100TRP", "BG100AGR", "BG100POM", "BG100LM",
+                "BG25TRPL",
+                "BG25AGRM", "BG25POM", "GLS150C", "GLS33C", "GLS150TRP", "GLS33TRP", "GLS150PM", "GLS33PM", "Shelf"
+            ]
 
+            # Génération des couleurs aléatoires pour chaque classe
+            class_colors = {class_name: (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) for
+                            class_name in class_names}
+
+            # Couleur rouge par défaut pour les classes non détectées
+            default_color = (0, 0, 255)  # Rouge
+
+            # Fonction pour dessiner les boîtes avec les noms de classe et les couleurs associées
+            def draw_boxes(image_path, detections):
                 img = cv2.imread(image_path)
 
                 for detection in detections:
-
                     name = detection['name']
-
                     box = detection['box']
-
                     x1, y1, x2, y2 = box['x1'], box['y1'], box['x2'], box['y2']
-
-                    color = (255, 0, 0)  # Couleur bleue pour les étagères
-
-                    if not name.startswith("Shelf"):
-                        color = (0, 255, 0)  # Couleur verte pour les articles
-
+                    color = class_colors.get(name, default_color)
                     cv2.rectangle(img, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
-
-                    cv2.putText(img, name, (int(x1), int(y1) - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+                    # Ajouter le nom de classe avec un fond coloré pour une meilleure visibilité
+                    text_size = cv2.getTextSize(name, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)[0]
+                    cv2.rectangle(img, (int(x1), int(y1) - text_size[1] - 5), (int(x1) + text_size[0], int(y1)), color,
+                                  -1)
+                    cv2.putText(img, name, (int(x1), int(y1) - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
 
                 return img
 
@@ -427,7 +464,8 @@ class Upload_image(View):
 
             # Détection des étagères et des articles
 
-            shelf_results, item_results = Shelves_and_Items_detection(SHELVES_PREDICTION_MODEL, ITEM_PREDICTION_MODEL,IMAGE_PATH)
+            shelf_results, item_results = Shelves_and_Items_detection(SHELVES_PREDICTION_MODEL, ITEM_PREDICTION_MODEL,
+                                                                      IMAGE_PATH)
 
             # Combinaison des résultats
 
@@ -452,11 +490,35 @@ class Upload_image(View):
 
             # Enregistrement dans un fichier JSON
 
-            json_results_path = f'Img_results_{image_uuid}.json'
+            json_results_path = f'upload/JSON/Img_results_{image_uuid}.json'
             with open(json_results_path, 'w') as json_file:
                 json.dump(combined_result, json_file, indent=4)
 
+
             # Dessiner les boîtes englobantes sur l'image originale
             image_with_boxes = draw_boxes(IMAGE_PATH, shelf_results + item_results)
-            image_with_boxes_path = f'Img_with_boxes_{image_uuid}.jpg'
+            image_with_boxes_path = f'upload/image/Img_with_boxes_{image_uuid}.jpg'
             cv2.imwrite(image_with_boxes_path, image_with_boxes)
+
+
+            with open(json_results_path, 'r') as json_file:
+                json_data = json.load(json_file)
+
+
+
+            return render(request, 'upload_image.html',
+                          {'form': form, 'img_obj': fridge_obj, 'image_with_boxes_path': image_with_boxes_path,
+                           'json_data': json_data})
+        else:
+
+            return render(request, 'upload_image.html', {'form': form})
+
+
+
+
+
+def Dashboard(request):
+    with open('saved_models/testImg_results.json') as json_file:
+        json_data = json.load(json_file)
+
+    return render(request, 'dashboard.html', {'json_data': json_data})

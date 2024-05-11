@@ -55,8 +55,53 @@
 						<div class="card-title">
 							<h2>Planogramme</h2>
 						</div>
-						<!--end::Card title-->
+					<div id="loader" class="loader"></div>
+
+					<style>.loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #3498db;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -30px 0 0 -30px;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 					</div>
+		<script>
+
+// Affiche le loader lorsque le chargement commence
+function showLoader() {
+  document.getElementById('loader').style.display = 'block';
+}
+
+// Masque le loader lorsque le chargement est terminé
+function hideLoader() {
+  document.getElementById('loader').style.display = 'none';
+}
+
+// Écoute les événements de chargement asynchrone (par exemple, une requête AJAX)
+document.addEventListener('readystatechange', function() {
+  if (document.readyState === 'loading') {
+      // Le chargement commence
+      showLoader();
+  } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      // Le chargement est terminé
+      hideLoader();
+  }
+});
+
+		</script>
+					
 					<!--end::Card header-->
 					<!--begin::Card body-->
 					<div class="card-body text-center pt-0">
@@ -164,10 +209,9 @@
 											</script>
 											<!--end::JSON Response-->
 										</div>
-											<!-- Affichage des données JSON -->
-										
-										
-										
+										<!-- Affichage des données JSON -->
+									
+									
 									</div>
 									<!--end::Table wrapper-->
 								</div>
@@ -206,6 +250,78 @@
 									<!--begin::Table wrapper-->
 									<div class="table-responsive">
 										<div class="scroll h-400px px-2">
+											<div class="row g-5">
+												
+												
+												<div class="col-lg-4">
+													<div class="card card-stretch-50 card-bordered mb-5">
+														<div class="card-header">
+															<h3 class="card-title">Height 100%</h3>
+														</div>
+														<div class="card-body">
+															Lorem Ipsum is simply dummy text
+														</div>
+														<div class="card-footer">
+															Footer
+														</div>
+													</div>
+													
+													<div class="card card-stretch-50 card-bordered mb-5">
+														<div class="card-header">
+															<h3 class="card-title">Height 100%</h3>
+														</div>
+														<div class="card-body">
+															Lorem Ipsum is simply dummy text
+														</div>
+														<div class="card-footer">
+															Footer
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-lg-4">
+													<div class="card card-stretch-50 card-bordered mb-5">
+														<div class="card-header">
+															<h3 class="card-title">Height 100%</h3>
+														</div>
+														<div class="card-body">
+															Lorem Ipsum is simply dummy text
+														</div>
+														<div class="card-footer">
+															Footer
+														</div>
+														<div class="card card-stretch-50 card-bordered mb-5">
+														<div class="card-header">
+															<h3 class="card-title">Height 100%</h3>
+														</div>
+														<div class="card-body">
+															Lorem Ipsum is simply dummy text
+														</div>
+														<div class="card-footer">
+															Footer
+														</div>
+													</div>
+													</div>
+												
+												
+												</div>
+												<div class="col-lg-4">
+													<div class="card card-stretch-50 card-bordered mb-5">
+														<div class="card-header">
+															<h3 class="card-title">Height 100%</h3>
+														</div>
+														<div class="card-body">
+															Lorem Ipsum is simply dummy text
+														</div>
+														<div class="card-footer">
+															Footer
+														</div>
+													</div>
+												
+												
+												</div>
+												
+											</div>
 										
 										
 										</div>
@@ -239,6 +355,7 @@
 	document.querySelector('#category_{{ productCategory.id }}').indeterminate = true;
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}"></script>
 {% endblock javascript%}
