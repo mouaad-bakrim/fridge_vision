@@ -76,12 +76,12 @@ import json
 
 import os, cv2
 import json
+from django.http import StreamingHttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.http import JsonResponse
 class Upload_image(View):
-
 
     def get(self, request):
         form = FridgeForm()  # Crée un formulaire vide pour affichage initial

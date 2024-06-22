@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'process',
     'base',
     'django_tables2',
-    'rest_framework'
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
