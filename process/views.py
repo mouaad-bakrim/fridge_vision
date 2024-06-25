@@ -1,35 +1,21 @@
-import json
-import os
-import time
 from uuid import uuid4
-
 from base.utils import PagedFilteredTableView
 from process.forms import ProcessListFormHelper
 from process.models import Process
 from process.tables import ProcessListTable
-
 from django.shortcuts import render
 from django.views import View
 from .forms import FridgeForm
-
 import numpy as np
 import random
-from PIL import Image
-from tensorflow.keras.preprocessing import image
-from django.views.generic import DetailView
-from ultralytics import YOLO
-from tensorflow.keras.models import load_model
-
+import os, cv2
 import json
-import os
-import tensorflow as tf
-
+from PIL import Image
 from ultralytics import YOLO
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-from tensorflow import keras
-
-from process.serializers import UploadImageSerializer
+import nltk
+from nltk.metrics.distance import edit_distance
 
 
 class ListProcess(PagedFilteredTableView):
@@ -53,34 +39,12 @@ class ListProcess(PagedFilteredTableView):
         return context
 
 
-class DetailProcess(DetailView):
-    template_name = 'process_detail.html'
-    model = Process
-    context_object_name = 'process'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-
-            'active_item': 'process_list',
-            'active_menu': 'process',
-
-        })
-        return context
-
-
-# @login_required(login_url='/login/')
-import json
 
 
 
-import os, cv2
-import json
-from django.http import StreamingHttpResponse
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
-from django.http import JsonResponse
+
+
 class Upload_image(View):
 
     def get(self, request):
@@ -99,29 +63,6 @@ class Upload_image(View):
             base_path = "/home/smart/Documents/projet/fridge_vision/"
             relative_path = fridge_obj.image.url
             IMAGE_PATH = os.path.join(base_path, relative_path.lstrip('/'))
-            print("Traitement de l'image en cours...")
-
-            def showProgressBar():
-                # Vous pouvez implémenter ici le code pour afficher la barre de progression
-                return JsonResponse({'status': 'progress-bar-showing'})
-
-            def updateProgressBar(progress):
-                # Vous pouvez implémenter ici le code pour mettre à jour la barre de progression
-                return JsonResponse({'status': 'progress-bar-updated', 'progress': progress})
-
-            def hideProgressBar():
-                # Vous pouvez implémenter ici le code pour masquer la barre de progression
-                return JsonResponse({'status': 'progress-bar-hidden'})
-
-            print("Traitement de l'image en cours...")
-
-            showProgressBar()
-
-            for progress in range(0, 101, 10):  # Exemple de progression de 0 à 100%
-                time.sleep(1)  # Simule un traitement qui prend du temps
-                updateProgressBar(progress)
-
-            hideProgressBar()
 
 
             def summary(boxes, names, orig_shape, normalize=False, decimals=5):
@@ -152,7 +93,7 @@ class Upload_image(View):
                 sorted_shelves = sorted(predictions, key=lambda x: x['box']['y1'])
 
                 for i, shelf in enumerate(sorted_shelves, start=1):
-                    shelf['name'] = f"Shelf_{i}"
+                    shelf['name'] = (f"Étagère_{i}")
 
                 return sorted_shelves
 
@@ -197,15 +138,15 @@ class Upload_image(View):
 
             ALIGNMENT_MODEL_PATH = "saved_models/articles_alignment.keras"
 
-            Alignment_class_names = ['not-ranged', 'ranged']
+            Alignment_class_names = ['Mal rangé', 'Bien rangé']
 
             PROFILPLASTIC_MODEL_PATH = "saved_models/profil_platic.keras"
 
-            profilplastic_class_names = ['available', 'unavailable']
+            profilplastic_class_names = ['Present', 'Absent']
 
             FONDARTICLES_MODEL_PATH = "saved_models/fond_articles.keras"
 
-            Fondarticlesclass_names = ['absent', 'present']
+            Fondarticlesclass_names = ['Indisponible', 'Disponible']
 
             def Shelves_and_Items_detection(shelves_model_path, items_model_path, image_path):
 
@@ -444,13 +385,13 @@ class Upload_image(View):
 
             FRIDGE_CLASSIFICATION_MODEL_4 = 'saved_models/DoorStatus_model.keras'
 
-            Usableclass_names = ['unusable', 'usable']
+            Usableclass_names = ['Inexploitable', 'Exploitable']
 
-            Brandclass_names = ['orangina', 'sidi ali', 'unknown']
+            Brandclass_names = ['Orangina', 'Sidi ali', 'Inconnu']
 
-            Stateclass_names = ['bad', 'good', 'unknown']
+            Stateclass_names = ['Mauvais', 'Bon', 'Inconnu']
 
-            DoorStatusclass_names = ['close', 'open']
+            DoorStatusclass_names = ['Fermé', 'Ouvert']
 
             usable_result = Fridge_Classification(FRIDGE_CLASSIFICATION_MODEL_1, IMAGE_PATH, Usableclass_names)
 
@@ -467,6 +408,55 @@ class Upload_image(View):
             shelf_results, item_results = Shelves_and_Items_detection(SHELVES_PREDICTION_MODEL, ITEM_PREDICTION_MODEL,
                                                                       IMAGE_PATH)
 
+            def token_based_levenshtein_similarity(list1, list2):
+                """Calculer la similarité basée sur la distance de Levenshtein entre deux listes."""
+                str1 = ' '.join(list1)
+                str2 = ' '.join(list2)
+                distance = edit_distance(str1, str2)
+                max_len = max(len(str1), len(str2))
+                similarity = 1 - (distance / max_len)
+                return similarity
+
+            def compare_shelves(fridge_shelves, planogram):
+                """Compare les étagères du frigo avec celles du planogramme."""
+                similarities = []
+                num_shelves = min(len(fridge_shelves), len(planogram))
+
+                for i in range(num_shelves):
+                    fridge_shelf_items = [item['name'] for item in fridge_shelves[i].get('items', [])]
+                    planogram_shelf_items = planogram[i]
+
+                    similarity = token_based_levenshtein_similarity(fridge_shelf_items, planogram_shelf_items)
+                    similarities.append((i + 1, similarity))
+
+                return similarities
+
+            def calculate_overall_similarity(similarities, total_shelves_in_fridge):
+                if not similarities:
+                    return 0.0
+                total_similarity = sum(similarity for _, similarity in similarities)
+                return (total_similarity / total_shelves_in_fridge)*100
+
+            # Liste des articles du planogramme
+
+            planogram_str = """ORG100Z,OG100Z,OR100Z,GL150POM,GL150TRP,GL150C
+            SA33,SA33,SA50,SA50,AAT33,AAT50,VT33,OUL25OW,OUL50
+            SA33KORG,SA33KV,SA33KRZ,GL33C,GL33TRP,GL33POM,OUL25TRP,ORG50,OUL33
+            SA150,AAT150,AAT150,AAT150,SA150,OUL100
+            SA150,SA150,SA150,SA150,SA150,SA150"""
+            planogram = [shelf.split(',') for shelf in planogram_str.split('\n')]
+
+            # Calculate shelf similarities
+            shelf_similarities = compare_shelves(shelf_results, planogram)
+
+            # Calculate overall similarity
+            overall_similarity = calculate_overall_similarity(shelf_similarities, len(shelf_results))
+
+            # Update each shelf with its similarity
+            for shelf, (shelf_num, similarity) in zip(shelf_results, shelf_similarities):
+                shelf['similarity'] = similarity*100
+
+
             # Combinaison des résultats
 
             combined_result = {
@@ -479,6 +469,8 @@ class Upload_image(View):
 
                 "Doorstatus": DoorSatatus_result,
 
+                "Overall_Similarity": overall_similarity,
+
                 "Shelves": shelf_results,
 
                 # "item_results": item_results
@@ -490,7 +482,7 @@ class Upload_image(View):
 
             # Enregistrement dans un fichier JSON
 
-            json_results_path = f'upload/JSON/Img_results_{image_uuid}.json'
+            json_results_path = f'upload/JSON/test_results_{image_uuid}.json'
             with open(json_results_path, 'w') as json_file:
                 json.dump(combined_result, json_file, indent=4)
 
@@ -522,3 +514,11 @@ def Dashboard(request):
         json_data = json.load(json_file)
 
     return render(request, 'dashboard.html', {'json_data': json_data})
+
+
+
+def Comparaison(request):
+    # with open('saved_models/Img_results.json') as json_file:
+    #     json_data = json.load(json_file)
+
+    return render(request, 'comparaison.html')
