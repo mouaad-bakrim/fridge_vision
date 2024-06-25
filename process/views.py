@@ -518,7 +518,7 @@ def Dashboard(request):
 
 
 def Comparaison(request):
-    # with open('saved_models/Img_results.json') as json_file:
-    #     json_data = json.load(json_file)
+    with open('saved_models/testImg_results.json') as json_file:
+        json_data = json.load(json_file)
 
-    return render(request, 'comparaison.html')
+    return render(request, 'comparaison.html', {'json_data': json_data})
