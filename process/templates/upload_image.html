@@ -66,7 +66,7 @@
 		<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 			<!--begin::Title-->
 			<h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-				Upload Image</h1>
+				Analyse du réfrigerateur</h1>
 			<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 				<!--begin::Item-->
 				<li class="breadcrumb-item text-muted">
@@ -201,13 +201,10 @@
 									</div>
 									<div class="col-lg-4 col-md-6 mb-3">
 										<div class="row">
-											<div class="col-5 fs-6 text-end">État:</div>
-											<div class="col-7 fw-bolder fs-4">
-												{% if json_data.Condition %}
-												<span class="badge badge-light-primary fw-bold"
-													  style="font-size: smaller;">
-												{{ json_data.Condition.predicted_class }}
-											</span>
+											<div class="col-5 fs-6 text-end">Conformité:</div>
+											<div class="col-7 fw-bolder fs-6">
+												{% if json_data.Overall_Similarity %}
+												{{ json_data.Overall_Similarity|floatformat:2 }}%
 												{% endif %}
 											</div>
 										</div>
@@ -227,10 +224,13 @@
 									</div>
 									<div class="col-lg-4 col-md-6 mb-3">
 										<div class="row">
-											<div class="col-5 fs-6 text-end">Conformité:</div>
-											<div class="col-7 fw-bolder fs-6">
-												{% if json_data.Overall_Similarity %}
-												{{ json_data.Overall_Similarity|floatformat:2 }}%
+											<div class="col-5 fs-6 text-end">État:</div>
+											<div class="col-7 fw-bolder fs-4">
+												{% if json_data.Condition %}
+												<span class="badge badge-light-success fw-bold"
+													  style="font-size: smaller;">
+												{{ json_data.Condition.predicted_class }}
+											</span>
 												{% endif %}
 											</div>
 										</div>
@@ -270,7 +270,7 @@
 																<span class="text-dark fw-bold"> {{ shelf.shelf_profil_result.predicted_class }}</span>
 															</li>
 															<li class="d-flex  mt-2 mb-1">
-																<span class="text-gray-800" style="margin-right: 1px">Marchandise en arrière: </span>
+																<span class="text-gray-800" style="margin-right: 4px">Marchandise en arrière: </span>
 																<span class="text-dark fw-bold"> {{ shelf.shelf_fond_result.predicted_class }}</span>
 															</li>
 															<li class="d-flex mt-2 mb-3">

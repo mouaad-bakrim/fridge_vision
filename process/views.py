@@ -1,8 +1,4 @@
 from uuid import uuid4
-from base.utils import PagedFilteredTableView
-from process.forms import ProcessListFormHelper
-from process.models import Process
-from process.tables import ProcessListTable
 from django.shortcuts import render
 from django.views import View
 from .forms import FridgeForm
@@ -16,31 +12,6 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import nltk
 from nltk.metrics.distance import edit_distance
-
-
-class ListProcess(PagedFilteredTableView):
-    permission_required = 'stock.view_picking'
-    model = Process
-    table_class = ProcessListTable
-    formhelper_class = ProcessListFormHelper
-    template_name = 'process_list.html'
-
-    def get_filter_kwargs(self):
-        filter_kwargs = {}
-        return filter_kwargs
-
-    def get_context_data(self, **kwargs):
-        table = self.get_table()
-        print(table)
-        table.exclude = ['selection', ]
-        context = super(ListProcess, self).get_context_data(**kwargs)
-
-        context.update({'active_item': 'process_list', 'active_menu': 'processs', 'table': table})
-        return context
-
-
-
-
 
 
 
@@ -97,44 +68,77 @@ class Upload_image(View):
 
                 return sorted_shelves
 
+            # def assign_items_to_shelves(sorted_shelves, detections):
+            #     for item in detections:
+            #
+            #         if not item['name'].startswith("Shelf") and not item['name'].startswith("Fridge"):
+            #
+            #             assigned = False
+            #
+            #             for shelf in sorted_shelves:
+            #
+            #                 shelf_y1 = shelf['box']['y1']
+            #
+            #                 shelf_y2 = shelf['box']['y2']
+            #
+            #                 item_y1 = item['box']['y1']
+            #
+            #                 item_y2 = item['box']['y2']
+            #
+            #                 # Vérifie si les coordonnées `y1` et `y2` de l'article correspondent approximativement à celles de l'étagère
+            #
+            #                 if shelf_y1 <= item_y1 <= shelf_y2 and shelf_y1 <= item_y2 <= shelf_y2:
+            #
+            #                     if "items" not in shelf:
+            #                         shelf[
+            #                             "items"] = []  # Crée une liste d'articles pour cette étagère si elle n'existe pas encore
+            #
+            #                     shelf["items"].append(item)  # Ajoute l'article à la liste d'articles de l'étagère
+            #
+            #                     assigned = True
+            #
+            #                     break  # Sort de la boucle dès que l'article est attribué à une étagère
+            #
+            #             if not assigned:
+            #                 # Si l'article n'est pas attribué à une étagère, l'ajoute directement aux résultats triés
+            #
+            #                 sorted_shelves.append(item)
+            #
+            #     return sorted_shelves
+            def calculate_intersection_area(box1, box2):
+                x_left = max(box1['x1'], box2['x1'])
+                y_top = max(box1['y1'], box2['y1'])
+                x_right = min(box1['x2'], box2['x2'])
+                y_bottom = min(box1['y2'], box2['y2'])
+
+                if x_right < x_left or y_bottom < y_top:
+                    return 0.0
+                intersection_area = (x_right - x_left) * (y_bottom - y_top)
+                return intersection_area
             def assign_items_to_shelves(sorted_shelves, detections):
-
                 for item in detections:
-
                     if not item['name'].startswith("Shelf") and not item['name'].startswith("Fridge"):
-
-                        assigned = False
+                        max_intersection = 0
+                        assigned_shelf = None
 
                         for shelf in sorted_shelves:
+                            intersection_area = calculate_intersection_area(shelf['box'], item['box'])
+                            if intersection_area > max_intersection:
+                                max_intersection = intersection_area
+                                assigned_shelf = shelf
 
-                            shelf_y1 = shelf['box']['y1']
-
-                            shelf_y2 = shelf['box']['y2']
-
-                            item_y1 = item['box']['y1']
-
-                            item_y2 = item['box']['y2']
-
-                            # Vérifie si les coordonnées `y1` et `y2` de l'article correspondent approximativement à celles de l'étagère
-
-                            if shelf_y1 <= item_y1 <= shelf_y2 and shelf_y1 <= item_y2 <= shelf_y2:
-
-                                if "items" not in shelf:
-                                    shelf[
-                                        "items"] = []  # Crée une liste d'articles pour cette étagère si elle n'existe pas encore
-
-                                shelf["items"].append(item)  # Ajoute l'article à la liste d'articles de l'étagère
-
-                                assigned = True
-
-                                break  # Sort de la boucle dès que l'article est attribué à une étagère
-
-                        if not assigned:
-                            # Si l'article n'est pas attribué à une étagère, l'ajoute directement aux résultats triés
-
-                            sorted_shelves.append(item)
-
+                        if assigned_shelf:
+                            if "items" not in assigned_shelf:
+                                assigned_shelf["items"] = []
+                            assigned_shelf["items"].append(item)
+                        else:
+                            hors_shelf = next((s for s in sorted_shelves if s['name'] == "hors_shelf"), None)
+                            if not hors_shelf:
+                                hors_shelf = {"name": "hors_shelf", "items": []}
+                                sorted_shelves.append(hors_shelf)
+                            hors_shelf["items"].append(item)
                 return sorted_shelves
+
 
             ALIGNMENT_MODEL_PATH = "saved_models/articles_alignment.keras"
 
@@ -147,6 +151,21 @@ class Upload_image(View):
             FONDARTICLES_MODEL_PATH = "saved_models/fond_articles.keras"
 
             Fondarticlesclass_names = ['Indisponible', 'Disponible']
+
+           #Suppression des detections doubles
+
+            def remove_duplicate_items(detections):
+                unique_detections = []
+                seen_boxes = set()
+                for item in detections:
+                    box_tuple = (
+                    item['box']['x1'], item['box']['y1'], item['box']['x2'], item['box']['y2'], item['name'])
+                    if box_tuple not in seen_boxes:
+                        seen_boxes.add(box_tuple)
+                        unique_detections.append(item)
+                return unique_detections
+
+
 
             def Shelves_and_Items_detection(shelves_model_path, items_model_path, image_path):
 
@@ -167,7 +186,7 @@ class Upload_image(View):
                 items_results = items_model(image_path)
 
                 items_detections = process_results(items_results)
-
+                items_detections = remove_duplicate_items(items_detections)
                 # Classifier les articles pour chaque étagère détectée
 
                 for shelf in sorted_shelves:
@@ -517,8 +536,34 @@ def Dashboard(request):
 
 
 
-def Comparaison(request):
-    with open('saved_models/testImg_results.json') as json_file:
-        json_data = json.load(json_file)
 
-    return render(request, 'comparaison.html', {'json_data': json_data})
+
+def token_based_levenshtein_similarity(list1, list2):
+    """Calculer la similarité basée sur la distance de Levenshtein entre deux listes."""
+    str1 = ' '.join(list1)
+    str2 = ' '.join(list2)
+    distance = edit_distance(str1, str2)
+    max_len = max(len(str1), len(str2))
+    similarity = 1 - (distance / max_len)
+    return similarity
+
+def compare_shelves(fridge_shelves, planogram):
+    """Compare les étagères du frigo avec celles du planogramme."""
+    similarities = []
+    num_shelves = min(len(fridge_shelves), len(planogram))
+
+    for i in range(num_shelves):
+        fridge_shelf_items = [item['name'] for item in fridge_shelves[i].get('items', [])]
+        planogram_shelf_items = planogram[i]
+
+        similarity = token_based_levenshtein_similarity(fridge_shelf_items, planogram_shelf_items)
+        similarities.append((i + 1, similarity))
+
+    return similarities
+
+def calculate_overall_similarity(similarities, total_shelves_in_fridge):
+    """Calcule la similarité globale en pourcentage entre les étagères du frigo et le planogramme."""
+    if not similarities:
+        return 0.0
+    total_similarity = sum(similarity for _, similarity in similarities)
+    return (total_similarity / total_shelves_in_fridge) * 100

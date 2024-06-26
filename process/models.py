@@ -19,7 +19,7 @@ class Process(models.Model):
 
     score = models.CharField(max_length=150, null=True, blank=True, verbose_name="Note")
 
-    image = models.ImageField(upload_to='process_images/', null=True, blank=True, verbose_name='Image')
+    image = models.ImageField(upload_to='upload/process_images/', null=True, blank=True, verbose_name='Image')
 
     def __str__(self):
         return f"{self.usability} - {self.brand}"
