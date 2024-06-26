@@ -1,0 +1,613 @@
+{
+    "Usability": {
+        "predicted_class": "Exploitable",
+        "confidence_score": 93.32549571990967
+    },
+    "Brand": {
+        "predicted_class": "Inconnu",
+        "confidence_score": 99.62615370750427
+    },
+    "Condition": {
+        "predicted_class": "Bon",
+        "confidence_score": 100.0
+    },
+    "Doorstatus": {
+        "predicted_class": "Ouvert",
+        "confidence_score": 100.0
+    },
+    "Overall_Similarity": 30.22327698798287,
+    "Shelves": [
+        {
+            "name": "\u00c9tag\u00e8re_1",
+            "class": 19,
+            "confidence": 0.91272,
+            "box": {
+                "x1": 12.88038,
+                "y1": 0.0,
+                "x2": 301.9473,
+                "y2": 106.14699
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 99.9081015586853
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Present",
+                "confidence_score": 99.9910831451416
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 97.55988717079163
+            },
+            "items": [
+                {
+                    "name": "ORG25",
+                    "class": 21,
+                    "confidence": 0.92335,
+                    "box": {
+                        "x1": 25.06967,
+                        "y1": 32.2451,
+                        "x2": 50.02197,
+                        "y2": 101.4399
+                    }
+                },
+                {
+                    "name": "ORG25",
+                    "class": 21,
+                    "confidence": 0.90219,
+                    "box": {
+                        "x1": 50.33791,
+                        "y1": 31.25076,
+                        "x2": 74.91634,
+                        "y2": 93.61116
+                    }
+                },
+                {
+                    "name": "ORG25",
+                    "class": 21,
+                    "confidence": 0.88471,
+                    "box": {
+                        "x1": 76.39216,
+                        "y1": 33.33504,
+                        "x2": 100.68923,
+                        "y2": 92.93579
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 33,
+                    "confidence": 0.82533,
+                    "box": {
+                        "x1": 253.34135,
+                        "y1": 21.20277,
+                        "x2": 278.12589,
+                        "y2": 91.99593
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 33,
+                    "confidence": 0.80783,
+                    "box": {
+                        "x1": 228.07416,
+                        "y1": 21.26316,
+                        "x2": 252.47504,
+                        "y2": 92.40488
+                    }
+                },
+                {
+                    "name": "VTL33",
+                    "class": 43,
+                    "confidence": 0.77891,
+                    "box": {
+                        "x1": 118.88545,
+                        "y1": 15.4417,
+                        "x2": 145.42653,
+                        "y2": 92.50905
+                    }
+                },
+                {
+                    "name": "VTL33",
+                    "class": 43,
+                    "confidence": 0.77619,
+                    "box": {
+                        "x1": 147.7094,
+                        "y1": 15.94068,
+                        "x2": 174.98874,
+                        "y2": 92.24146
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 33,
+                    "confidence": 0.74779,
+                    "box": {
+                        "x1": 203.48299,
+                        "y1": 22.64278,
+                        "x2": 226.78206,
+                        "y2": 92.29611
+                    }
+                },
+                {
+                    "name": "VTL33",
+                    "class": 43,
+                    "confidence": 0.7215,
+                    "box": {
+                        "x1": 176.57477,
+                        "y1": 16.40166,
+                        "x2": 202.36189,
+                        "y2": 92.43671
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 33,
+                    "confidence": 0.29987,
+                    "box": {
+                        "x1": 119.31926,
+                        "y1": 15.26914,
+                        "x2": 145.61876,
+                        "y2": 92.48227
+                    }
+                }
+            ],
+            "similarity": 18.181818181818176
+        },
+        {
+            "name": "\u00c9tag\u00e8re_2",
+            "class": 19,
+            "confidence": 0.9327,
+            "box": {
+                "x1": 17.65594,
+                "y1": 106.7812,
+                "x2": 287.96463,
+                "y2": 211.05359
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 96.94433808326721
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Present",
+                "confidence_score": 99.99861717224121
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Indisponible",
+                "confidence_score": 94.14172172546387
+            },
+            "items": [
+                {
+                    "name": "SA33KO",
+                    "class": 37,
+                    "confidence": 0.98433,
+                    "box": {
+                        "x1": 229.14197,
+                        "y1": 114.35452,
+                        "x2": 253.06377,
+                        "y2": 196.41911
+                    }
+                },
+                {
+                    "name": "OUL25OW",
+                    "class": 27,
+                    "confidence": 0.95732,
+                    "box": {
+                        "x1": 90.58515,
+                        "y1": 118.86951,
+                        "x2": 115.10251,
+                        "y2": 198.36537
+                    }
+                },
+                {
+                    "name": "SA33KV",
+                    "class": 40,
+                    "confidence": 0.94109,
+                    "box": {
+                        "x1": 179.57712,
+                        "y1": 114.90529,
+                        "x2": 203.52187,
+                        "y2": 195.98987
+                    }
+                },
+                {
+                    "name": "OUL25OW",
+                    "class": 27,
+                    "confidence": 0.92847,
+                    "box": {
+                        "x1": 32.93276,
+                        "y1": 118.85782,
+                        "x2": 59.41484,
+                        "y2": 203.18802
+                    }
+                },
+                {
+                    "name": "OUL25OR",
+                    "class": 26,
+                    "confidence": 0.91913,
+                    "box": {
+                        "x1": 118.31516,
+                        "y1": 120.15967,
+                        "x2": 146.0695,
+                        "y2": 197.68355
+                    }
+                },
+                {
+                    "name": "OUL25OW",
+                    "class": 27,
+                    "confidence": 0.89295,
+                    "box": {
+                        "x1": 63.11607,
+                        "y1": 118.5395,
+                        "x2": 87.97763,
+                        "y2": 198.07825
+                    }
+                },
+                {
+                    "name": "SA33KRG",
+                    "class": 38,
+                    "confidence": 0.47752,
+                    "box": {
+                        "x1": 149.27434,
+                        "y1": 114.95582,
+                        "x2": 178.63658,
+                        "y2": 196.62386
+                    }
+                },
+                {
+                    "name": "SA33KRG",
+                    "class": 38,
+                    "confidence": 0.42165,
+                    "box": {
+                        "x1": 204.7054,
+                        "y1": 114.70631,
+                        "x2": 228.26476,
+                        "y2": 195.89326
+                    }
+                },
+                {
+                    "name": "SA33KRZ",
+                    "class": 39,
+                    "confidence": 0.36784,
+                    "box": {
+                        "x1": 149.13005,
+                        "y1": 114.69798,
+                        "x2": 178.90465,
+                        "y2": 197.23047
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 33,
+                    "confidence": 0.2763,
+                    "box": {
+                        "x1": 253.55013,
+                        "y1": 115.05021,
+                        "x2": 278.07285,
+                        "y2": 199.09332
+                    }
+                }
+            ],
+            "similarity": 20.270270270270274
+        },
+        {
+            "name": "\u00c9tag\u00e8re_3",
+            "class": 19,
+            "confidence": 0.92722,
+            "box": {
+                "x1": 29.76511,
+                "y1": 211.41837,
+                "x2": 283.25946,
+                "y2": 318.4371
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 99.33732748031616
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 92.36900806427002
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 54.638904333114624
+            },
+            "items": [
+                {
+                    "name": "ORG50",
+                    "class": 22,
+                    "confidence": 0.9693,
+                    "box": {
+                        "x1": 237.6315,
+                        "y1": 228.16737,
+                        "x2": 271.97238,
+                        "y2": 307.38828
+                    }
+                },
+                {
+                    "name": "OUL50",
+                    "class": 30,
+                    "confidence": 0.93338,
+                    "box": {
+                        "x1": 43.6104,
+                        "y1": 220.32928,
+                        "x2": 71.83205,
+                        "y2": 315.66656
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 41,
+                    "confidence": 0.90592,
+                    "box": {
+                        "x1": 116.29271,
+                        "y1": 223.85214,
+                        "x2": 143.98898,
+                        "y2": 315.49286
+                    }
+                },
+                {
+                    "name": "OUL50",
+                    "class": 30,
+                    "confidence": 0.87965,
+                    "box": {
+                        "x1": 74.69675,
+                        "y1": 228.16061,
+                        "x2": 99.41172,
+                        "y2": 315.71848
+                    }
+                },
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.84391,
+                    "box": {
+                        "x1": 181.64552,
+                        "y1": 217.17078,
+                        "x2": 207.91785,
+                        "y2": 309.42465
+                    }
+                },
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.83999,
+                    "box": {
+                        "x1": 207.11441,
+                        "y1": 215.32031,
+                        "x2": 234.04906,
+                        "y2": 309.02155
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 41,
+                    "confidence": 0.80841,
+                    "box": {
+                        "x1": 97.55441,
+                        "y1": 223.22147,
+                        "x2": 118.77936,
+                        "y2": 312.07059
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 41,
+                    "confidence": 0.78435,
+                    "box": {
+                        "x1": 155.38667,
+                        "y1": 224.15102,
+                        "x2": 182.57109,
+                        "y2": 312.30594
+                    }
+                },
+                {
+                    "name": "OUL33",
+                    "class": 29,
+                    "confidence": 0.27812,
+                    "box": {
+                        "x1": 74.24549,
+                        "y1": 228.35432,
+                        "x2": 99.41312,
+                        "y2": 316.05792
+                    }
+                }
+            ],
+            "similarity": 24.35897435897436
+        },
+        {
+            "name": "\u00c9tag\u00e8re_4",
+            "class": 19,
+            "confidence": 0.94601,
+            "box": {
+                "x1": 36.90253,
+                "y1": 317.1825,
+                "x2": 284.39771,
+                "y2": 450.80026
+            },
+            "alignment_result": {
+                "predicted_class": "Mal rang\u00e9",
+                "confidence_score": 99.92376565933228
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 98.87451529502869
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 64.6752417087555
+            },
+            "items": [
+                {
+                    "name": "OUL100",
+                    "class": 24,
+                    "confidence": 0.93892,
+                    "box": {
+                        "x1": 54.33084,
+                        "y1": 323.13193,
+                        "x2": 86.48252,
+                        "y2": 442.98117
+                    }
+                },
+                {
+                    "name": "VTL150",
+                    "class": 42,
+                    "confidence": 0.90672,
+                    "box": {
+                        "x1": 199.61516,
+                        "y1": 315.43948,
+                        "x2": 232.06804,
+                        "y2": 432.91772
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 31,
+                    "confidence": 0.83235,
+                    "box": {
+                        "x1": 98.10812,
+                        "y1": 320.02591,
+                        "x2": 135.13243,
+                        "y2": 441.0137
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 31,
+                    "confidence": 0.62185,
+                    "box": {
+                        "x1": 230.74837,
+                        "y1": 313.48761,
+                        "x2": 268.42819,
+                        "y2": 436.46823
+                    }
+                },
+                {
+                    "name": "AAT150",
+                    "class": 0,
+                    "confidence": 0.60123,
+                    "box": {
+                        "x1": 166.78249,
+                        "y1": 317.01932,
+                        "x2": 200.34888,
+                        "y2": 435.34595
+                    }
+                },
+                {
+                    "name": "B150",
+                    "class": 3,
+                    "confidence": 0.36793,
+                    "box": {
+                        "x1": 133.81718,
+                        "y1": 318.0983,
+                        "x2": 168.01027,
+                        "y2": 439.51105
+                    }
+                }
+            ],
+            "similarity": 49.01960784313726
+        },
+        {
+            "name": "\u00c9tag\u00e8re_5",
+            "class": 19,
+            "confidence": 0.93253,
+            "box": {
+                "x1": 42.11234,
+                "y1": 446.69455,
+                "x2": 283.9028,
+                "y2": 592.20093
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 99.99926090240479
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 97.9178786277771
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 97.25374579429626
+            },
+            "items": [
+                {
+                    "name": "ORG100",
+                    "class": 19,
+                    "confidence": 0.94299,
+                    "box": {
+                        "x1": 137.15862,
+                        "y1": 475.21527,
+                        "x2": 169.83203,
+                        "y2": 585.42554
+                    }
+                },
+                {
+                    "name": "GLS150PM",
+                    "class": 14,
+                    "confidence": 0.92921,
+                    "box": {
+                        "x1": 202.8587,
+                        "y1": 461.79984,
+                        "x2": 235.84717,
+                        "y2": 577.12793
+                    }
+                },
+                {
+                    "name": "GLS150TRP",
+                    "class": 15,
+                    "confidence": 0.88409,
+                    "box": {
+                        "x1": 236.20027,
+                        "y1": 457.18472,
+                        "x2": 271.47229,
+                        "y2": 575.26526
+                    }
+                },
+                {
+                    "name": "GLS150PM",
+                    "class": 14,
+                    "confidence": 0.75013,
+                    "box": {
+                        "x1": 169.79878,
+                        "y1": 457.31064,
+                        "x2": 201.76532,
+                        "y2": 576.4552
+                    }
+                },
+                {
+                    "name": "ORG100Z",
+                    "class": 20,
+                    "confidence": 0.7481,
+                    "box": {
+                        "x1": 102.19264,
+                        "y1": 480.40369,
+                        "x2": 135.90234,
+                        "y2": 592.66107
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 31,
+                    "confidence": 0.74701,
+                    "box": {
+                        "x1": 57.04797,
+                        "y1": 466.19983,
+                        "x2": 99.51486,
+                        "y2": 599.51129
+                    }
+                },
+                {
+                    "name": "GLS150C",
+                    "class": 13,
+                    "confidence": 0.6894,
+                    "box": {
+                        "x1": 170.27776,
+                        "y1": 457.76624,
+                        "x2": 201.69321,
+                        "y2": 575.92792
+                    }
+                }
+            ],
+            "similarity": 39.28571428571429
+        }
+    ]
+}

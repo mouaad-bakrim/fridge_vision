@@ -1,0 +1,400 @@
+{
+    "Usability": {
+        "predicted_class": "Exploitable",
+        "confidence_score": 73.97063374519348
+    },
+    "Brand": {
+        "predicted_class": "Inconnu",
+        "confidence_score": 99.99915361404419
+    },
+    "Condition": {
+        "predicted_class": "Bon",
+        "confidence_score": 99.98005032539368
+    },
+    "Doorstatus": {
+        "predicted_class": "Ouvert",
+        "confidence_score": 100.0
+    },
+    "Overall_Similarity": 23.137783392641733,
+    "Shelves": [
+        {
+            "name": "\u00c9tag\u00e8re_1",
+            "class": 19,
+            "confidence": 0.90535,
+            "box": {
+                "x1": 47.13478,
+                "y1": 27.44597,
+                "x2": 269.54364,
+                "y2": 131.81024
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 97.28116989135742
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 98.54258298873901
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 74.63442087173462
+            },
+            "items": [
+                {
+                    "name": "OUL25OW",
+                    "class": 27,
+                    "confidence": 0.93014,
+                    "box": {
+                        "x1": 64.06254,
+                        "y1": 49.27837,
+                        "x2": 89.42129,
+                        "y2": 126.43996
+                    }
+                },
+                {
+                    "name": "SA33KV",
+                    "class": 40,
+                    "confidence": 0.92694,
+                    "box": {
+                        "x1": 178.70018,
+                        "y1": 50.2921,
+                        "x2": 202.61821,
+                        "y2": 127.54685
+                    }
+                },
+                {
+                    "name": "SA33KV",
+                    "class": 40,
+                    "confidence": 0.76336,
+                    "box": {
+                        "x1": 129.68279,
+                        "y1": 51.11012,
+                        "x2": 154.39703,
+                        "y2": 131.31615
+                    }
+                },
+                {
+                    "name": "SA33KV",
+                    "class": 40,
+                    "confidence": 0.71739,
+                    "box": {
+                        "x1": 201.60719,
+                        "y1": 50.50977,
+                        "x2": 225.46043,
+                        "y2": 125.71355
+                    }
+                },
+                {
+                    "name": "SA33KRG",
+                    "class": 38,
+                    "confidence": 0.47554,
+                    "box": {
+                        "x1": 225.52594,
+                        "y1": 42.98895,
+                        "x2": 253.33716,
+                        "y2": 123.94695
+                    }
+                },
+                {
+                    "name": "SA33KO",
+                    "class": 37,
+                    "confidence": 0.47255,
+                    "box": {
+                        "x1": 153.63914,
+                        "y1": 48.77737,
+                        "x2": 178.80327,
+                        "y2": 130.89847
+                    }
+                },
+                {
+                    "name": "SA33KRG",
+                    "class": 38,
+                    "confidence": 0.36068,
+                    "box": {
+                        "x1": 154.0157,
+                        "y1": 49.20538,
+                        "x2": 178.73007,
+                        "y2": 130.49837
+                    }
+                },
+                {
+                    "name": "SA33KV",
+                    "class": 40,
+                    "confidence": 0.29158,
+                    "box": {
+                        "x1": 154.01653,
+                        "y1": 48.76485,
+                        "x2": 178.74388,
+                        "y2": 130.62061
+                    }
+                }
+            ],
+            "similarity": 12.06896551724138
+        },
+        {
+            "name": "\u00c9tag\u00e8re_2",
+            "class": 19,
+            "confidence": 0.936,
+            "box": {
+                "x1": 52.58068,
+                "y1": 130.74002,
+                "x2": 264.39792,
+                "y2": 232.24049
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 99.99915361404419
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 99.69325065612793
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 99.94971752166748
+            },
+            "items": [
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.95451,
+                    "box": {
+                        "x1": 128.38124,
+                        "y1": 141.50589,
+                        "x2": 155.35368,
+                        "y2": 231.25645
+                    }
+                },
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.93363,
+                    "box": {
+                        "x1": 182.03329,
+                        "y1": 138.86722,
+                        "x2": 208.35602,
+                        "y2": 229.97308
+                    }
+                },
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.86814,
+                    "box": {
+                        "x1": 208.13075,
+                        "y1": 143.22659,
+                        "x2": 230.07333,
+                        "y2": 228.28366
+                    }
+                },
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.79929,
+                    "box": {
+                        "x1": 156.05371,
+                        "y1": 140.79045,
+                        "x2": 181.46712,
+                        "y2": 231.02376
+                    }
+                },
+                {
+                    "name": "OUL50",
+                    "class": 30,
+                    "confidence": 0.74032,
+                    "box": {
+                        "x1": 67.04716,
+                        "y1": 142.07323,
+                        "x2": 92.44746,
+                        "y2": 229.13104
+                    }
+                },
+                {
+                    "name": "AAT50",
+                    "class": 2,
+                    "confidence": 0.72241,
+                    "box": {
+                        "x1": 229.17595,
+                        "y1": 147.9924,
+                        "x2": 253.76385,
+                        "y2": 228.27614
+                    }
+                },
+                {
+                    "name": "OUL33",
+                    "class": 29,
+                    "confidence": 0.59221,
+                    "box": {
+                        "x1": 93.69473,
+                        "y1": 148.22263,
+                        "x2": 116.76587,
+                        "y2": 231.12869
+                    }
+                }
+            ],
+            "similarity": 25.806451612903224
+        },
+        {
+            "name": "\u00c9tag\u00e8re_3",
+            "class": 19,
+            "confidence": 0.9384,
+            "box": {
+                "x1": 55.12439,
+                "y1": 234.23752,
+                "x2": 265.84412,
+                "y2": 388.90085
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 99.9148964881897
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 99.88842606544495
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 99.99442100524902
+            },
+            "items": [
+                {
+                    "name": "OUL100",
+                    "class": 24,
+                    "confidence": 0.82968,
+                    "box": {
+                        "x1": 188.04269,
+                        "y1": 252.51825,
+                        "x2": 222.01375,
+                        "y2": 384.2908
+                    }
+                },
+                {
+                    "name": "B150",
+                    "class": 3,
+                    "confidence": 0.79732,
+                    "box": {
+                        "x1": 222.45833,
+                        "y1": 286.53241,
+                        "x2": 252.96544,
+                        "y2": 384.49307
+                    }
+                },
+                {
+                    "name": "VTL150",
+                    "class": 42,
+                    "confidence": 0.54601,
+                    "box": {
+                        "x1": 67.42892,
+                        "y1": 248.30295,
+                        "x2": 108.2413,
+                        "y2": 383.99695
+                    }
+                },
+                {
+                    "name": "B60",
+                    "class": 5,
+                    "confidence": 0.44991,
+                    "box": {
+                        "x1": 158.3493,
+                        "y1": 287.04889,
+                        "x2": 188.07722,
+                        "y2": 385.26785
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 31,
+                    "confidence": 0.38645,
+                    "box": {
+                        "x1": 124.13802,
+                        "y1": 245.67625,
+                        "x2": 159.01863,
+                        "y2": 385.0994
+                    }
+                }
+            ],
+            "similarity": 11.538461538461542
+        },
+        {
+            "name": "\u00c9tag\u00e8re_4",
+            "class": 19,
+            "confidence": 0.93224,
+            "box": {
+                "x1": 54.78902,
+                "y1": 390.43961,
+                "x2": 268.70325,
+                "y2": 543.55206
+            },
+            "alignment_result": {
+                "predicted_class": "Bien rang\u00e9",
+                "confidence_score": 99.63209629058838
+            },
+            "shelf_profil_result": {
+                "predicted_class": "Absent",
+                "confidence_score": 66.1483883857727
+            },
+            "shelf_fond_result": {
+                "predicted_class": "Disponible",
+                "confidence_score": 89.81316685676575
+            },
+            "items": [
+                {
+                    "name": "VTL150",
+                    "class": 42,
+                    "confidence": 0.93576,
+                    "box": {
+                        "x1": 211.05156,
+                        "y1": 396.47311,
+                        "x2": 254.69786,
+                        "y2": 535.32117
+                    }
+                },
+                {
+                    "name": "VTL150",
+                    "class": 42,
+                    "confidence": 0.90493,
+                    "box": {
+                        "x1": 171.2394,
+                        "y1": 392.56604,
+                        "x2": 209.54005,
+                        "y2": 528.34265
+                    }
+                },
+                {
+                    "name": "B150",
+                    "class": 3,
+                    "confidence": 0.88584,
+                    "box": {
+                        "x1": 100.39414,
+                        "y1": 393.79834,
+                        "x2": 136.43008,
+                        "y2": 530.06628
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 31,
+                    "confidence": 0.71188,
+                    "box": {
+                        "x1": 64.48829,
+                        "y1": 394.31317,
+                        "x2": 100.47235,
+                        "y2": 532.05731
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 31,
+                    "confidence": 0.60148,
+                    "box": {
+                        "x1": 135.60628,
+                        "y1": 392.93427,
+                        "x2": 171.45625,
+                        "y2": 525.9295
+                    }
+                }
+            ],
+            "similarity": 43.13725490196079
+        }
+    ]
+}

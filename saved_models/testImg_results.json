@@ -1,0 +1,585 @@
+{
+    "Usability": {
+        "predicted_class": "usable",
+        "confidence_score": 99.96886253356934
+    },
+    "Brand": {
+        "predicted_class": "orangina",
+        "confidence_score": 100.0
+    },
+    "Condition": {
+        "predicted_class": "good",
+        "confidence_score": 100.0
+    },
+    "Doorstatus": {
+        "predicted_class": "open",
+        "confidence_score": 100.0
+    },
+    "Shelves": [
+        {
+            "name": "Shelf_1",
+            "class": 19,
+            "confidence": 0.91525,
+            "box": {
+                "x1": 88.70498,
+                "y1": 83.97668,
+                "x2": 312.97269,
+                "y2": 178.00183
+            },
+            "alignment_result": {
+                "predicted_class": "ranged",
+                "confidence_score": 100.0
+            },
+            "shelf_profil_result": {
+                "predicted_class": "unavailable",
+                "confidence_score": 99.97016787528992
+            },
+            "shelf_fond_result": {
+                "predicted_class": "present",
+                "confidence_score": 94.70336437225342
+            },
+            "items": [
+                {
+                    "name": "SA33KV",
+                    "class": 46,
+                    "confidence": 0.89465,
+                    "box": {
+                        "x1": 116.93102,
+                        "y1": 94.85615,
+                        "x2": 137.61469,
+                        "y2": 170.24869
+                    }
+                },
+                {
+                    "name": "SA33KRG",
+                    "class": 44,
+                    "confidence": 0.86753,
+                    "box": {
+                        "x1": 138.35591,
+                        "y1": 94.58546,
+                        "x2": 157.04015,
+                        "y2": 169.70895
+                    }
+                },
+                {
+                    "name": "SA33KO",
+                    "class": 43,
+                    "confidence": 0.74823,
+                    "box": {
+                        "x1": 158.58635,
+                        "y1": 97.15125,
+                        "x2": 177.09367,
+                        "y2": 170.2757
+                    }
+                },
+                {
+                    "name": "SA33DISF",
+                    "class": 40,
+                    "confidence": 0.69909,
+                    "box": {
+                        "x1": 93.45205,
+                        "y1": 98.5696,
+                        "x2": 115.52135,
+                        "y2": 168.01398
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 39,
+                    "confidence": 0.6673,
+                    "box": {
+                        "x1": 278.60242,
+                        "y1": 111.94453,
+                        "x2": 297.27444,
+                        "y2": 176.56358
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 39,
+                    "confidence": 0.66416,
+                    "box": {
+                        "x1": 178.07471,
+                        "y1": 105.96922,
+                        "x2": 198.02708,
+                        "y2": 170.95149
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 39,
+                    "confidence": 0.63643,
+                    "box": {
+                        "x1": 238.81146,
+                        "y1": 109.98428,
+                        "x2": 258.56311,
+                        "y2": 172.82439
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 39,
+                    "confidence": 0.58364,
+                    "box": {
+                        "x1": 258.17224,
+                        "y1": 111.01593,
+                        "x2": 278.3306,
+                        "y2": 175.19405
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 39,
+                    "confidence": 0.50207,
+                    "box": {
+                        "x1": 197.42992,
+                        "y1": 104.4058,
+                        "x2": 218.38705,
+                        "y2": 172.9707
+                    }
+                },
+                {
+                    "name": "SA33",
+                    "class": 39,
+                    "confidence": 0.34432,
+                    "box": {
+                        "x1": 219.14857,
+                        "y1": 107.32838,
+                        "x2": 238.68028,
+                        "y2": 174.12379
+                    }
+                },
+                {
+                    "name": "SA33KRG",
+                    "class": 44,
+                    "confidence": 0.28888,
+                    "box": {
+                        "x1": 157.80194,
+                        "y1": 96.23689,
+                        "x2": 176.93129,
+                        "y2": 170.72951
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Shelf_2",
+            "class": 19,
+            "confidence": 0.92115,
+            "box": {
+                "x1": 93.69966,
+                "y1": 173.17613,
+                "x2": 311.57187,
+                "y2": 274.00345
+            },
+            "alignment_result": {
+                "predicted_class": "ranged",
+                "confidence_score": 100.0
+            },
+            "shelf_profil_result": {
+                "predicted_class": "unavailable",
+                "confidence_score": 96.55159115791321
+            },
+            "shelf_fond_result": {
+                "predicted_class": "present",
+                "confidence_score": 99.44274425506592
+            },
+            "items": [
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.68366,
+                    "box": {
+                        "x1": 229.6131,
+                        "y1": 191.41089,
+                        "x2": 251.13159,
+                        "y2": 264.30215
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.67923,
+                    "box": {
+                        "x1": 208.101,
+                        "y1": 191.81827,
+                        "x2": 228.26538,
+                        "y2": 262.35455
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.60126,
+                    "box": {
+                        "x1": 251.43141,
+                        "y1": 191.53654,
+                        "x2": 271.75552,
+                        "y2": 265.19434
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.58641,
+                    "box": {
+                        "x1": 144.27017,
+                        "y1": 190.21227,
+                        "x2": 165.02032,
+                        "y2": 263.48865
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.50727,
+                    "box": {
+                        "x1": 271.77582,
+                        "y1": 191.88487,
+                        "x2": 291.76569,
+                        "y2": 266.6142
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.50545,
+                    "box": {
+                        "x1": 187.24739,
+                        "y1": 191.36073,
+                        "x2": 207.32249,
+                        "y2": 261.59912
+                    }
+                },
+                {
+                    "name": "OUL50",
+                    "class": 33,
+                    "confidence": 0.49985,
+                    "box": {
+                        "x1": 99.90527,
+                        "y1": 181.78712,
+                        "x2": 124.13988,
+                        "y2": 262.70087
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.44109,
+                    "box": {
+                        "x1": 165.67009,
+                        "y1": 191.07622,
+                        "x2": 186.6376,
+                        "y2": 263.07352
+                    }
+                },
+                {
+                    "name": "OUL33",
+                    "class": 32,
+                    "confidence": 0.26666,
+                    "box": {
+                        "x1": 100.22824,
+                        "y1": 181.82904,
+                        "x2": 124.49855,
+                        "y2": 262.81091
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Shelf_3",
+            "class": 19,
+            "confidence": 0.93128,
+            "box": {
+                "x1": 94.39255,
+                "y1": 273.13318,
+                "x2": 307.00436,
+                "y2": 379.8931
+            },
+            "alignment_result": {
+                "predicted_class": "ranged",
+                "confidence_score": 98.81647825241089
+            },
+            "shelf_profil_result": {
+                "predicted_class": "unavailable",
+                "confidence_score": 92.35641956329346
+            },
+            "shelf_fond_result": {
+                "predicted_class": "present",
+                "confidence_score": 72.42637276649475
+            },
+            "items": [
+                {
+                    "name": "BG100LM",
+                    "class": 8,
+                    "confidence": 0.94859,
+                    "box": {
+                        "x1": 159.29715,
+                        "y1": 280.05661,
+                        "x2": 183.1524,
+                        "y2": 372.15405
+                    }
+                },
+                {
+                    "name": "BG100POM",
+                    "class": 9,
+                    "confidence": 0.91152,
+                    "box": {
+                        "x1": 103.76316,
+                        "y1": 280.15948,
+                        "x2": 131.58537,
+                        "y2": 370.79715
+                    }
+                },
+                {
+                    "name": "BG100TRP",
+                    "class": 10,
+                    "confidence": 0.89756,
+                    "box": {
+                        "x1": 133.43326,
+                        "y1": 277.84836,
+                        "x2": 157.08273,
+                        "y2": 369.25137
+                    }
+                },
+                {
+                    "name": "ORG100",
+                    "class": 20,
+                    "confidence": 0.88206,
+                    "box": {
+                        "x1": 236.98996,
+                        "y1": 282.96356,
+                        "x2": 263.45407,
+                        "y2": 371.65915
+                    }
+                },
+                {
+                    "name": "ORG100",
+                    "class": 20,
+                    "confidence": 0.85323,
+                    "box": {
+                        "x1": 208.79686,
+                        "y1": 279.18948,
+                        "x2": 235.84995,
+                        "y2": 372.60715
+                    }
+                },
+                {
+                    "name": "BG100LM",
+                    "class": 8,
+                    "confidence": 0.59297,
+                    "box": {
+                        "x1": 184.59911,
+                        "y1": 280.32007,
+                        "x2": 208.36241,
+                        "y2": 371.82187
+                    }
+                },
+                {
+                    "name": "BG100LM",
+                    "class": 8,
+                    "confidence": 0.58647,
+                    "box": {
+                        "x1": 264.43982,
+                        "y1": 281.453,
+                        "x2": 288.05585,
+                        "y2": 374.48132
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Shelf_4",
+            "class": 19,
+            "confidence": 0.91204,
+            "box": {
+                "x1": 98.6628,
+                "y1": 377.56586,
+                "x2": 295.70294,
+                "y2": 483.90894
+            },
+            "alignment_result": {
+                "predicted_class": "ranged",
+                "confidence_score": 99.26077127456665
+            },
+            "shelf_profil_result": {
+                "predicted_class": "unavailable",
+                "confidence_score": 99.99830722808838
+            },
+            "shelf_fond_result": {
+                "predicted_class": "present",
+                "confidence_score": 98.58248233795166
+            },
+            "items": [
+                {
+                    "name": "AAT150",
+                    "class": 0,
+                    "confidence": 0.90979,
+                    "box": {
+                        "x1": 192.2195,
+                        "y1": 380.1326,
+                        "x2": 219.87552,
+                        "y2": 475.01715
+                    }
+                },
+                {
+                    "name": "AAT150",
+                    "class": 0,
+                    "confidence": 0.79027,
+                    "box": {
+                        "x1": 165.05804,
+                        "y1": 379.88333,
+                        "x2": 191.65987,
+                        "y2": 476.45831
+                    }
+                },
+                {
+                    "name": "AAT150",
+                    "class": 0,
+                    "confidence": 0.7763,
+                    "box": {
+                        "x1": 136.49574,
+                        "y1": 379.70801,
+                        "x2": 163.77576,
+                        "y2": 476.9574
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.49747,
+                    "box": {
+                        "x1": 221.05243,
+                        "y1": 378.96832,
+                        "x2": 246.59285,
+                        "y2": 473.5661
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.42496,
+                    "box": {
+                        "x1": 106.15409,
+                        "y1": 379.59647,
+                        "x2": 135.15279,
+                        "y2": 477.60583
+                    }
+                },
+                {
+                    "name": "SA50",
+                    "class": 47,
+                    "confidence": 0.29336,
+                    "box": {
+                        "x1": 106.8446,
+                        "y1": 380.14667,
+                        "x2": 135.25218,
+                        "y2": 477.80121
+                    }
+                },
+                {
+                    "name": "OUL100",
+                    "class": 25,
+                    "confidence": 0.27557,
+                    "box": {
+                        "x1": 257.698,
+                        "y1": 382.30804,
+                        "x2": 281.65723,
+                        "y2": 476.11874
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Shelf_5",
+            "class": 19,
+            "confidence": 0.94888,
+            "box": {
+                "x1": 99.30456,
+                "y1": 481.80722,
+                "x2": 295.64951,
+                "y2": 599.87567
+            },
+            "alignment_result": {
+                "predicted_class": "not-ranged",
+                "confidence_score": 59.136420488357544
+            },
+            "shelf_profil_result": {
+                "predicted_class": "unavailable",
+                "confidence_score": 94.89419460296631
+            },
+            "shelf_fond_result": {
+                "predicted_class": "absent",
+                "confidence_score": 80.76031804084778
+            },
+            "items": [
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.78389,
+                    "box": {
+                        "x1": 137.00433,
+                        "y1": 490.58862,
+                        "x2": 165.11075,
+                        "y2": 592.04736
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.7502,
+                    "box": {
+                        "x1": 108.04066,
+                        "y1": 490.66415,
+                        "x2": 135.56705,
+                        "y2": 593.96674
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.54689,
+                    "box": {
+                        "x1": 165.20865,
+                        "y1": 491.08963,
+                        "x2": 192.12744,
+                        "y2": 594.49408
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.49324,
+                    "box": {
+                        "x1": 245.53503,
+                        "y1": 482.65488,
+                        "x2": 271.83054,
+                        "y2": 581.80194
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.48267,
+                    "box": {
+                        "x1": 192.84048,
+                        "y1": 486.96124,
+                        "x2": 219.81976,
+                        "y2": 589.78424
+                    }
+                },
+                {
+                    "name": "SA150",
+                    "class": 37,
+                    "confidence": 0.32313,
+                    "box": {
+                        "x1": 220.94194,
+                        "y1": 485.31067,
+                        "x2": 245.3289,
+                        "y2": 584.65521
+                    }
+                }
+            ]
+        }
+    ]
+}
