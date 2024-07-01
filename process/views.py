@@ -14,7 +14,7 @@ import nltk
 from nltk.metrics.distance import edit_distance
 
 
-
+from django.conf import settings
 
 class Upload_image(View):
 
@@ -31,7 +31,8 @@ class Upload_image(View):
             form.save()
             fridge_obj = form.instance
             print("img_obj", fridge_obj, fridge_obj.image.url)
-            base_path = "/home/smart/Documents/projet/fridge_vision/"
+            base_path = settings.BASE_DIR
+            print("base_path", base_path)
             relative_path = fridge_obj.image.url
             IMAGE_PATH = os.path.join(base_path, relative_path.lstrip('/'))
 
