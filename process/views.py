@@ -12,9 +12,8 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import nltk
 from nltk.metrics.distance import edit_distance
-
-
 from django.conf import settings
+
 
 class Upload_image(View):
 
@@ -25,8 +24,6 @@ class Upload_image(View):
     def post(self, request):
         form = FridgeForm(request.POST, request.FILES)
 
-
-
         if form.is_valid():
             form.save()
             fridge_obj = form.instance
@@ -35,7 +32,6 @@ class Upload_image(View):
             print("base_path", base_path)
             relative_path = fridge_obj.image.url
             IMAGE_PATH = os.path.join(base_path, relative_path.lstrip('/'))
-
 
             def summary(boxes, names, orig_shape, normalize=False, decimals=5):
                 results = []
@@ -69,43 +65,6 @@ class Upload_image(View):
 
                 return sorted_shelves
 
-            # def assign_items_to_shelves(sorted_shelves, detections):
-            #     for item in detections:
-            #
-            #         if not item['name'].startswith("Shelf") and not item['name'].startswith("Fridge"):
-            #
-            #             assigned = False
-            #
-            #             for shelf in sorted_shelves:
-            #
-            #                 shelf_y1 = shelf['box']['y1']
-            #
-            #                 shelf_y2 = shelf['box']['y2']
-            #
-            #                 item_y1 = item['box']['y1']
-            #
-            #                 item_y2 = item['box']['y2']
-            #
-            #                 # Vérifie si les coordonnées `y1` et `y2` de l'article correspondent approximativement à celles de l'étagère
-            #
-            #                 if shelf_y1 <= item_y1 <= shelf_y2 and shelf_y1 <= item_y2 <= shelf_y2:
-            #
-            #                     if "items" not in shelf:
-            #                         shelf[
-            #                             "items"] = []  # Crée une liste d'articles pour cette étagère si elle n'existe pas encore
-            #
-            #                     shelf["items"].append(item)  # Ajoute l'article à la liste d'articles de l'étagère
-            #
-            #                     assigned = True
-            #
-            #                     break  # Sort de la boucle dès que l'article est attribué à une étagère
-            #
-            #             if not assigned:
-            #                 # Si l'article n'est pas attribué à une étagère, l'ajoute directement aux résultats triés
-            #
-            #                 sorted_shelves.append(item)
-            #
-            #     return sorted_shelves
             def calculate_intersection_area(box1, box2):
                 x_left = max(box1['x1'], box2['x1'])
                 y_top = max(box1['y1'], box2['y1'])
@@ -116,6 +75,7 @@ class Upload_image(View):
                     return 0.0
                 intersection_area = (x_right - x_left) * (y_bottom - y_top)
                 return intersection_area
+
             def assign_items_to_shelves(sorted_shelves, detections):
                 for item in detections:
                     if not item['name'].startswith("Shelf") and not item['name'].startswith("Fridge"):
@@ -140,7 +100,6 @@ class Upload_image(View):
                             hors_shelf["items"].append(item)
                 return sorted_shelves
 
-
             ALIGNMENT_MODEL_PATH = "saved_models/articles_alignment.keras"
 
             Alignment_class_names = ['Mal rangé', 'Bien rangé']
@@ -153,20 +112,18 @@ class Upload_image(View):
 
             Fondarticlesclass_names = ['Indisponible', 'Disponible']
 
-           #Suppression des detections doubles
+            # Suppression des detections doubles
 
             def remove_duplicate_items(detections):
                 unique_detections = []
                 seen_boxes = set()
                 for item in detections:
                     box_tuple = (
-                    item['box']['x1'], item['box']['y1'], item['box']['x2'], item['box']['y2'], item['name'])
+                        item['box']['x1'], item['box']['y1'], item['box']['x2'], item['box']['y2'], item['name'])
                     if box_tuple not in seen_boxes:
                         seen_boxes.add(box_tuple)
                         unique_detections.append(item)
                 return unique_detections
-
-
 
             def Shelves_and_Items_detection(shelves_model_path, items_model_path, image_path):
 
@@ -455,7 +412,7 @@ class Upload_image(View):
                 if not similarities:
                     return 0.0
                 total_similarity = sum(similarity for _, similarity in similarities)
-                return (total_similarity / total_shelves_in_fridge)*100
+                return (total_similarity / total_shelves_in_fridge) * 100
 
             # Liste des articles du planogramme
 
@@ -474,8 +431,7 @@ class Upload_image(View):
 
             # Update each shelf with its similarity
             for shelf, (shelf_num, similarity) in zip(shelf_results, shelf_similarities):
-                shelf['similarity'] = similarity*100
-
+                shelf['similarity'] = similarity * 100
 
             # Combinaison des résultats
 
@@ -506,17 +462,13 @@ class Upload_image(View):
             with open(json_results_path, 'w') as json_file:
                 json.dump(combined_result, json_file, indent=4)
 
-
             # Dessiner les boîtes englobantes sur l'image originale
             image_with_boxes = draw_boxes(IMAGE_PATH, shelf_results + item_results)
             image_with_boxes_path = f'upload/image/Img_with_boxes_{image_uuid}.jpg'
             cv2.imwrite(image_with_boxes_path, image_with_boxes)
 
-
             with open(json_results_path, 'r') as json_file:
                 json_data = json.load(json_file)
-
-
 
             return render(request, 'upload_image.html',
                           {'form': form, 'img_obj': fridge_obj, 'image_with_boxes_path': image_with_boxes_path,
@@ -524,19 +476,6 @@ class Upload_image(View):
         else:
 
             return render(request, 'upload_image.html', {'form': form})
-
-
-
-
-
-def Dashboard(request):
-    with open('saved_models/testImg_results.json') as json_file:
-        json_data = json.load(json_file)
-
-    return render(request, 'dashboard.html', {'json_data': json_data})
-
-
-
 
 
 def token_based_levenshtein_similarity(list1, list2):
@@ -547,6 +486,7 @@ def token_based_levenshtein_similarity(list1, list2):
     max_len = max(len(str1), len(str2))
     similarity = 1 - (distance / max_len)
     return similarity
+
 
 def compare_shelves(fridge_shelves, planogram):
     """Compare les étagères du frigo avec celles du planogramme."""
@@ -562,9 +502,17 @@ def compare_shelves(fridge_shelves, planogram):
 
     return similarities
 
+
 def calculate_overall_similarity(similarities, total_shelves_in_fridge):
     """Calcule la similarité globale en pourcentage entre les étagères du frigo et le planogramme."""
     if not similarities:
         return 0.0
     total_similarity = sum(similarity for _, similarity in similarities)
     return (total_similarity / total_shelves_in_fridge) * 100
+
+
+def Dashboard(request):
+    with open('saved_models/testImg_results.json') as json_file:
+        json_data = json.load(json_file)
+
+    return render(request, 'dashboard.html', {'json_data': json_data})
